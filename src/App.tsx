@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-import type { ReactNode } from "react"
+import type {ReactNode} from "react"
 
 interface CardPropsTypes {
     children: ReactNode;
@@ -20,16 +20,8 @@ interface UserPropsTypes {
     imageUrl: string;
 }
 
-function Card({ children }: CardPropsTypes) {
-    return (
-        <article className="card">
-            {children}
-        </article>
-    );
-}
-
 function Book({name, imageUrl}: BookPropsTypes) {
-    return(
+    return (
         <div>
             <h1>{name}</h1>
             <img src={imageUrl} alt={name}/>
@@ -49,15 +41,32 @@ function User({name, age, bookCount, level, imageUrl}: UserPropsTypes) {
     )
 }
 
-
-
+const books = [
+    {
+        name: "Book a",
+        imageUrl: ""
+    },
+    {
+        name: "Book b",
+        imageUrl: ""
+    },
+    {
+        name: "Book c",
+        imageUrl: ""
+    }
+];
 
 function App() {
 
 
     return (
         <div>
-            <h1>Ahoj Reacte</h1>
+            <div>
+                {books.map((book) => <Book name={book.name} imageUrl={book.imageUrl}/>)}
+            </div>
+            <div>
+                <User name={"Nathan"} age={24} imageUrl={""} bookCount={29} level={1000}/>
+            </div>
         </div>
     );
 }
